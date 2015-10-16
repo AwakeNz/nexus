@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="libs/javolution-5.5.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/L2J_Mobius"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
