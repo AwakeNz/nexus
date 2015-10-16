@@ -8,11 +8,16 @@ package cz.nxs.events.engine.base;
 
 import cz.nxs.interf.PlayerEventInfo;
 
-public class PlayerActionsHandler {
-    private final PlayerEventInfo player;
-
-    public PlayerActionsHandler(PlayerEventInfo player) {
-        this.player = player;
-    }
+public class PlayerActionsHandler
+{
+	@SuppressWarnings(
+	{
+		"unused"
+	})
+	private final PlayerEventInfo player;
+	
+	public PlayerActionsHandler(PlayerEventInfo player)
+	{
+		this.player = player;
+	}
 }
-
