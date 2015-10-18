@@ -3,6 +3,8 @@
  */
 package cz.nxs.l2j;
 
+import com.l2jserver.gameserver.model.skills.AbnormalType;
+
 public interface IValues
 {
 	public int PAPERDOLL_UNDER();
@@ -149,11 +151,11 @@ public interface IValues
 	
 	public int TYPE_TPBOOKMARK();
 	
-	public int ABNORMAL_NULL();
+	public AbnormalType ABNORMAL_NULL();
 	
-	public int ABNORMAL_BLEEDING();
+	public AbnormalType ABNORMAL_BLEEDING();
 	
-	public int ABNORMAL_POISON();
+	public AbnormalType ABNORMAL_POISON();
 	
 	public int ABNORMAL_REDCIRCLE();
 	
@@ -163,9 +165,9 @@ public interface IValues
 	
 	public int ABNORMAL_FEAR();
 	
-	public int ABNORMAL_STUN();
+	public AbnormalType ABNORMAL_STUN();
 	
-	public int ABNORMAL_SLEEP();
+	public AbnormalType ABNORMAL_SLEEP();
 	
 	public int ABNORMAL_MUTED();
 	
@@ -177,7 +179,7 @@ public interface IValues
 	
 	public int ABNORMAL_UNKNOWN_13();
 	
-	public int ABNORMAL_BIG_HEAD();
+	public AbnormalType ABNORMAL_BIG_HEAD();
 	
 	public int ABNORMAL_FLAME();
 	

@@ -852,14 +852,14 @@ public class PlayerEventInfo implements IPlayerEventInfo
 		Broadcast.toSelfAndKnownPlayersInRadius(this._owner, msk, 810000);
 		SetupGauge sg = new SetupGauge(0, 10000);
 		this._owner.sendPacket(sg);
-		this._owner.forceIsCasting(GameTimeController.getGameTicks() + 100);
+		this._owner.forceIsCasting(GameTimeController.getInstance().getGameTicks() + 100);
 	}
 	
 	@Override
 	public void startAntifeedProtection(boolean broadcast)
 	{
-		this._owner.startAntifeedProtection(true, broadcast);
-		this._antifeedProtection = true;
+		_owner.startAntifeedProtection(true, broadcast);
+		_antifeedProtection = true;
 		if (broadcast)
 		{
 			this.broadcastUserInfo();
@@ -869,8 +869,8 @@ public class PlayerEventInfo implements IPlayerEventInfo
 	@Override
 	public void stopAntifeedProtection(boolean broadcast)
 	{
-		this._owner.startAntifeedProtection(false, broadcast);
-		this._antifeedProtection = false;
+		_owner.startAntifeedProtection(false, broadcast);
+		_antifeedProtection = false;
 		if (broadcast)
 		{
 			this.broadcastUserInfo();
@@ -955,7 +955,7 @@ public class PlayerEventInfo implements IPlayerEventInfo
 		}
 		else
 		{
-			this._owner.startAbnormalVisualEffect(mask);
+			this._owner.startAbnormalEffect(mask);
 		}
 	}
 	
@@ -969,7 +969,7 @@ public class PlayerEventInfo implements IPlayerEventInfo
 		}
 		else
 		{
-			this._owner.stopAbnormalVisualEffect(mask);
+			this._owner.stopAbnormalEffect(mask);
 		}
 	}
 	
@@ -1044,7 +1044,6 @@ public class PlayerEventInfo implements IPlayerEventInfo
 		return shortcut;
 	}
 	
-	@Override
 	public ShortCutData createSkillShortcut(int slotId, int pageId, SkillData skill)
 	{
 		ShortCutData shortcut = new ShortCutData(slotId, pageId, Values.getInstance().TYPE_SKILL(), skill.getId(), skill.getLevel(), 1);
@@ -1362,7 +1361,7 @@ public class PlayerEventInfo implements IPlayerEventInfo
 	@Override
 	public int getKarma()
 	{
-		return this._owner.getKarma();
+		return this._owner.getReputation();
 	}
 	
 	@Override
