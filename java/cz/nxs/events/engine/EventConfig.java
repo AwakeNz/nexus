@@ -44,8 +44,8 @@ public class EventConfig
 	
 	public void loadEventConfigs()
 	{
-		this.loadMiniEventModes();
-		this.loadEventConfigsFromDb();
+		loadMiniEventModes();
+		loadEventConfigsFromDb();
 	}
 	
 	public void loadGlobalConfigs()
