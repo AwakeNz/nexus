@@ -446,7 +446,7 @@ public class EventMap
 		TextBuilder tb = new TextBuilder();
 		for (EventType type : this.getEvents())
 		{
-			if ((type == EventType.Classic_1v1) || (type == EventType.PartyvsParty) || (type == EventType.TvT) || (type == EventType.TVTv) || (type == EventType.MiniTvT))
+			if ((type == EventType.Classic_1v1) || (type == EventType.PartyvsParty) || (type == EventType.TvT) || (type == EventType.TvTAdv) || (type == EventType.MiniTvT))
 			{
 				if (!this.checkForSpawns(SpawnType.Regular, 1, 1))
 				{
@@ -456,7 +456,7 @@ public class EventMap
 				{
 					tb.append("<font color=B46F6B>" + type.getAltTitle() + "</font> -> <font color=9f9f9f>No</font> <font color=B46F6B>REGULAR</font> <font color=9f9f9f>spawn team 2 count 1 (or more)</font><br1>");
 				}
-				if (type != EventType.TVTv)
+				if (type != EventType.TvTAdv)
 				{
 					continue;
 				}
@@ -574,7 +574,7 @@ public class EventMap
 	{
 		for (EventType type : this.getEvents())
 		{
-			if ((type == EventType.Classic_1v1) || (type == EventType.Classic_2v2) || (type == EventType.PartyvsParty) || (type == EventType.TvT) || (type == EventType.TVTv) || (type == EventType.MiniTvT))
+			if ((type == EventType.Classic_1v1) || (type == EventType.Classic_2v2) || (type == EventType.PartyvsParty) || (type == EventType.TvT) || (type == EventType.TvTAdv) || (type == EventType.MiniTvT))
 			{
 				if (!this.checkForSpawns(SpawnType.Regular, 1, 1))
 				{

@@ -3,7 +3,6 @@
  */
 package cz.nxs.events.engine.base;
 
-
 public class EventTypeHolder
 {
 	public EventType _type;
@@ -11,12 +10,6 @@ public class EventTypeHolder
 	public EventTypeHolder(EventType type)
 	{
 		this._type = type;
-	}
-	
-	public EventTypeHolder register()
-	{
-		EventType.addHolder(this);
-		return this;
 	}
 	
 	public EventType getType()

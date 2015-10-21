@@ -42,7 +42,7 @@ import cz.nxs.interf.delegate.NpcData;
 import cz.nxs.interf.delegate.PartyData;
 import cz.nxs.interf.delegate.SkillData;
 
-public class FFAEventTemplate extends AbstractMainEvent
+public abstract class FFAEventTemplate extends AbstractMainEvent
 {
 	private FastMap<Integer, CustomEventInstance> _matches;
 	private boolean _waweRespawn;
