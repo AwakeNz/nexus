@@ -64,7 +64,7 @@ Configurable {
 
     public MiniEventManager(EventType type) {
         super(type);
-        this._compareByLevel = new Comparator<RegistrationData>(){
+        this.set_compareByLevel(new Comparator<RegistrationData>(){
 
             @Override
             public int compare(RegistrationData p1, RegistrationData p2) {
@@ -72,7 +72,7 @@ Configurable {
                 int level1 = p1.getAverageLevel();
                 return level1 == (level2 = p2.getAverageLevel()) ? 0 : (level1 < level2 ? -1 : 1);
             }
-        };
+        });
         this._tournamentActive = false;
         this._parties = new FastList();
         this._games = new FastList();
@@ -707,6 +707,22 @@ Configurable {
     protected boolean allowHealers() {
         return this.getBoolean("allowHealers");
     }
+
+	/**
+	 * @return the _compareByLevel
+	 */
+	public Comparator<RegistrationData> get_compareByLevel()
+	{
+		return _compareByLevel;
+	}
+
+	/**
+	 * @param _compareByLevel the _compareByLevel to set
+	 */
+	public void set_compareByLevel(Comparator<RegistrationData> _compareByLevel)
+	{
+		this._compareByLevel = _compareByLevel;
+	}
 
 }
 

@@ -112,12 +112,14 @@ public class NexusOut implements INexusOut
 		return Rnd.get(min, max);
 	}
 	
-	public static int random(int max)
+	@Override
+	public int random(int max)
 	{
 		return Rnd.get(max);
 	}
 	
-	public static Connection getConnection()
+	@Override
+	public Connection getConnection()
 	{
 		try
 		{
@@ -174,7 +176,7 @@ public class NexusOut implements INexusOut
 	@Override
 	public DoorData[] getInstanceDoors(int instanceId)
 	{
-		FastList doors = new FastList<>();
+		FastList<DoorData> doors = new FastList<>();
 		for (L2DoorInstance d : InstanceManager.getInstance().getInstance(instanceId).getDoors())
 		{
 			doors.add(new DoorData(d));
@@ -389,7 +391,7 @@ public class NexusOut implements INexusOut
 	@Override
 	public Integer[] getAllClassIds()
 	{
-		FastList idsList = new FastList<>();
+		FastList<Integer> idsList = new FastList<>();
 		for (ClassId id : ClassId.values())
 		{
 			idsList.add(id.getId());
@@ -400,8 +402,8 @@ public class NexusOut implements INexusOut
 	@Override
 	public PlayerEventInfo[] getAllPlayers()
 	{
-		FastList eventInfos = new FastList();
-		for (L2PcInstance player : L2World.getInstance().getAllPlayersArray())
+		FastList<PlayerEventInfo> eventInfos = new FastList<>();
+		for (L2PcInstance player : L2World.getInstance().getAllPlayersCount())
 		{
 			eventInfos.add(player.getEventInfo());
 		}
