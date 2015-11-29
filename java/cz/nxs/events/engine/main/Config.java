@@ -22,7 +22,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-import cz.nxs.interf.NexusOut;
+import com.l2jserver.util.Rnd;
 
 public class Config
 {
@@ -188,7 +188,7 @@ public class Config
 		
 		if (num == 0)
 		{
-			return positions.get(event).get(owner).get(NexusOut.random(positions.get(event).get(owner).size()) + 1);
+			return positions.get(event).get(owner).get(Rnd.get(positions.get(event).get(owner).size()) + 1);
 		}
 		return positions.get(event).get(owner).get(num);
 	}

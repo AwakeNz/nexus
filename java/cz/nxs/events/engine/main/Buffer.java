@@ -3,13 +3,15 @@ package cz.nxs.events.engine.main;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Map;
 import java.util.StringTokenizer;
 
 import javolution.text.TextBuilder;
 import javolution.util.FastList;
 import javolution.util.FastMap;
+
+import com.l2jserver.commons.database.pool.impl.ConnectionFactory;
+
 import cz.nxs.events.NexusLoader;
 import cz.nxs.events.engine.EventConfig;
 import cz.nxs.interf.NexusOut;
@@ -100,12 +102,11 @@ public class Buffer
 		{
 			return;
 		}
-		Connection con = null;
-		PreparedStatement statement = null;
+		// PreparedStatement statement = null;
 		try
 		{
-			con = NexusOut.getConnection();
-			statement = con.prepareStatement("SELECT * FROM event_buffs");
+			Connection con = ConnectionFactory.getInstance().getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT * FROM event_buffs");
 			ResultSet rset = statement.executeQuery();
 			int count = 0;
 			while (rset.next())
@@ -132,18 +133,6 @@ public class Buffer
 		catch (Exception e)
 		{
 			System.out.println("EventBuffs SQL catch");
-		}
-		finally
-		{
-			try
-			{
-				NexusOut.closeConnection(con);
-			}
-			catch (SQLException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 	
@@ -292,11 +281,9 @@ public class Buffer
 	
 	public void updateSQL()
 	{
-		Connection con = null;
-		PreparedStatement statement = null;
 		try
 		{
-			con = NexusOut.getConnection();
+			Connection con = ConnectionFactory.getInstance().getConnection();
 			for (Map.Entry<String, Boolean> player : changes.entrySet())
 			{
 				TextBuilder sb = new TextBuilder();
@@ -316,7 +303,7 @@ public class Buffer
 				}
 				if (player.getValue())
 				{
-					statement = con.prepareStatement("INSERT INTO event_buffs(player,buffs) VALUES (?,?)");
+					PreparedStatement statement = con.prepareStatement("INSERT INTO event_buffs(player,buffs) VALUES (?,?)");
 					statement.setString(1, player.getKey());
 					statement.setString(2, sb.toString());
 					
@@ -325,7 +312,7 @@ public class Buffer
 				}
 				else
 				{
-					statement = con.prepareStatement("UPDATE event_buffs SET buffs=? WHERE player=?");
+					PreparedStatement statement = con.prepareStatement("UPDATE event_buffs SET buffs=? WHERE player=?");
 					statement.setString(1, sb.toString());
 					statement.setString(2, player.getKey());
 					
@@ -337,18 +324,6 @@ public class Buffer
 		catch (Exception e)
 		{
 			System.out.println("EventBuffs SQL catch");
-		}
-		finally
-		{
-			try
-			{
-				NexusOut.closeConnection(con);
-			}
-			catch (SQLException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		changes.clear();
 		
